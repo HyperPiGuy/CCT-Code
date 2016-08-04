@@ -2,18 +2,16 @@ package toolkit.neuralnetwork.source
 
 import libcog._
 import toolkit.neuralnetwork.DifferentiableField
-import toolkit.neuralnetwork.policy.StandardLearningRule
-import toolkit.neuralnetwork.layer.BiasLayer
 
 /**
 * The CSVDataSource will read in data from a CSV file and populate a field
 * with the data with each element being the Shape of elemSize
 *
 *@param fileName CSV file to load
-*@param batchSize Examples to read from file
-*@param header True if csv file has a header row on top of file, false if not
-*@param areNums True if all data in file are numbers, False if data includes strings\characters
-*@param elemSize Shape of data to be loaded into layer
+*@param batchSize # of examples to read from file
+*@param header True if CSV file has a header row on top of file, false if not
+*@param areNums True if all data in file are numbers, False if data includes char data
+*@param elemSize Shape of data element
 */
 
 case class CSVDataSource(fileName:String,
