@@ -24,6 +24,7 @@ object Confusion{
              batchSize: Int,
              classes: Int): Field = {
 
+    require(testLabels.tensorShape==correctLabels.tensorShape,"Label fields are not the same length")
     val length = batchSize*classes
 
     def makeScalar(v: VectorField): ScalarField = {
