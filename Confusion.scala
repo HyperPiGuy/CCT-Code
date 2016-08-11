@@ -18,6 +18,8 @@ object Confusion{
     * @param batchSize number of examples in field
     * @param classes number of possible classifications of data
     * @return A ScalarField of the classifications versus correct classifications
+    *
+    * Created by Matthew Fontaine on 8/10/2016.
     */
   def apply (testLabels: Field,
              correctLabels: Field,
