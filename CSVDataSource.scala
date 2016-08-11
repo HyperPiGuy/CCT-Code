@@ -24,7 +24,7 @@ case class CSVDataSource(fileName:String,
 
     override val forward: Field = {
 
-      ////////////////////////////////read in csv data to Array
+      //Reads CSV data into Array
       val bufferedSource = io.Source.fromFile(fileName)
       val dataIn: Array[Array[String]] = {
         var mat: Array[Array[String]] = Array.empty
@@ -53,7 +53,7 @@ case class CSVDataSource(fileName:String,
 
       require(dataSet(0).length==Dsize(0)*Dsize(1),s"The number of data points per example in file does not equal ${Dsize(0)*Dsize(1)}")
 
-      ////////////////Covert data to 2D Float Array
+      //Coverts data to 2D Float Array
       var Fmat: Array[Array[Float]] = Array.empty
       if (areNums) {
         Fmat = dataSet.map(_.map(x => x.toFloat))
@@ -62,7 +62,7 @@ case class CSVDataSource(fileName:String,
       }
       val dataArr = Fmat.transpose
 
-      //////////////put data into 2D Vector Array
+      //Put data into 2D Vector Array
       val dataVecArr: Array[Array[Vector]] = {
         var mat: Array[Array[Vector]] = Array.empty
         var vArr: Array[Vector] = Array.empty
