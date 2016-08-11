@@ -13,20 +13,20 @@ object Confusion{
     * Bottom right is (classes,classes)
     *
     *
-    * @param testLabels labels that the network has made
-    * @param correctLabels known labels from the dataset
+    * @param predictedLabels labels that the network has made
+    * @param actualLabels correct classification labels from the dataset
     * @param batchSize number of examples in field
     * @param classes number of possible classifications of data
     * @return A ScalarField of the classifications versus correct classifications
     *
     * Created by Matthew Fontaine on 8/10/2016.
     */
-  def apply (testLabels: Field,
-             correctLabels: Field,
+  def apply (predictedLabels: Field,
+             actualLabels: Field,
              batchSize: Int,
              classes: Int): Field = {
 
-    require(testLabels.tensorShape==correctLabels.tensorShape,"Label fields are not the same length")
+    require(predictedLabels.tensorShape==actualLabels.tensorShape,"Label fields are not the same length")
     val length = batchSize*classes
 
     def makeScalar(v: VectorField): ScalarField = {
@@ -41,7 +41,7 @@ object Confusion{
       sField
     }
 
-    val totalScalar = makeScalar(testLabels)+2f*makeScalar(correctLabels)
+    val totalScalar = makeScalar(predictedLabels)+2f*makeScalar(actualLabels)
 
     val confField = GPUOperator(ScalarField(classes,classes).fieldType){
       val i = _intVar()
