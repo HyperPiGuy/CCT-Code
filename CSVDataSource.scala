@@ -12,6 +12,8 @@ import toolkit.neuralnetwork.DifferentiableField
 *@param header True if CSV file has a header row on top of file, false if not
 *@param areNums True if all data in file are numbers, False if data includes char data
 *@param elemSize Shape of data element
+*
+* Created by Matthew Fontaine
 */
 
 case class CSVDataSource(fileName:String,
