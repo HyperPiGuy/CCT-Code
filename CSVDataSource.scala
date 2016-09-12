@@ -77,12 +77,11 @@ case class CSVDataSource(fileName:String,
       }
 
       val VField = new VectorField(Dsize(0),Dsize(1), (i, j) => dataVecArr(i)(j))
-      val DF = DifferentiableField(VField, batchSize)
 
       val fieldOut = {
         if (areNums) {
-          DF.forward
-         }else {DF.forward / 255f}
+          VField
+         }else {VField / 255f}
         }
       fieldOut
     }
