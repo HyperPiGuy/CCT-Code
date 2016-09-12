@@ -78,11 +78,9 @@ case class CSVDataSource(fileName:String,
 
       val VField = new VectorField(Dsize(0),Dsize(1), (i, j) => dataVecArr(i)(j))
 
-      val fieldOut = {
-        if (areNums) {
-          VField
-         }else {VField / 255f}
-        }
-      fieldOut
+      if (areNums) {
+        VField
+        }else {VField / 255f}
+        
     }
 }
