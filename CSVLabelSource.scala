@@ -18,5 +18,5 @@ case class CSVLabelSource (fileName:String,
                            classes:Int,
                            header:Boolean) extends DifferentiableField {
   override val forward: Field =
-    DifferentiableField(indexToOneHotCode(CSVDataSource(fileName,batchSize,header,true,Shape(1,1)).forward,classes),batchSize).forward.toVectorField(0).toVectorField(0)
+    indexToOneHotCode(CSVDataSource(fileName,batchSize,header,true,Shape(1,1)).forward,classes).toVectorField(0).toVectorField(0)
 }
