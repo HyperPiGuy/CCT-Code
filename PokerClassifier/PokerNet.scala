@@ -1,3 +1,4 @@
+package toolkit.neuralnetwork.examples.networks
 /**
   * Created by Matthew Fontaine on 8/17/2016.
   */
